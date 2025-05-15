@@ -12,7 +12,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "npx prisma migrate deploy && npm run start"
   },
-  "author": "kienmatu",
+  "author": "duynghiadev",
   "license": "ISC",
   "repository": {
     "type": "git",
