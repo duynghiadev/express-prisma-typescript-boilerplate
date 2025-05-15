@@ -16,7 +16,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kienmatu/express-prisma-typescript-boilerplate.git"
+    "url": "git@github.com:duynghiadev/express-prisma-typescript-boilerplate.git"
   },
   "dependencies": {
     "@prisma/client": "^3.10.0",
