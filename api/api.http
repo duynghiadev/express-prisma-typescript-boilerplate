@@ -1,0 +1,15 @@
+### Lấy danh sách tất cả heroes
+GET http://localhost:3001/heroes
+
+### Thêm hero mới
+POST http://localhost:3001/heroes
+Content-Type: application/json
+
+{
+    "name": "Spider Man",
+    "origin": "classic",
+    "description": "beautiful"
+}
+
+### Lấy hero theo ID
+GET http://localhost:3001/heroes/1
