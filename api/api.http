@@ -1,3 +1,6 @@
+### Kiểm tra server
+GET http://localhost:3001/
+
 ### Lấy danh sách tất cả heroes
 GET http://localhost:3001/heroes
 
