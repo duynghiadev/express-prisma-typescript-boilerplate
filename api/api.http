@@ -12,4 +12,4 @@ Content-Type: application/json
 }
 
 ### Lấy hero theo ID
-GET http://localhost:3001/heroes/1
+GET http://localhost:3001/heroes/2
