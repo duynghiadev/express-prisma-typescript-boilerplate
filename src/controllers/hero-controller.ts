@@ -14,7 +14,8 @@ export default class HeroController extends BaseController {
     this.router.get(this.path, this.getAllHero);
     this.router.post(this.path, this.addHero);
     this.router.get(this.path + "/:heroId", this.getHeroById);
-    // Bạn có thể thêm put, patch, delete sau.
+    this.router.put(this.path + "/:heroId", this.updateHero);
+    this.router.delete(this.path + "/:heroId", this.deleteHero);
   }
 
   getHeroById = async (
@@ -53,5 +54,59 @@ export default class HeroController extends BaseController {
       },
     });
     response.json(hero);
+  };
+
+  updateHero = async (
+    request: express.Request,
+    response: express.Response,
+    next: express.NextFunction,
+  ) => {
+    const heroId = Number.parseInt(request.params.heroId);
+    const reqBody = request.body;
+    const hero = await this.prisma.hero.findUnique({
+      where: {
+        id: heroId,
+      },
+    });
+
+    if (hero) {
+      const updatedHero = await this.prisma.hero.update({
+        where: {
+          id: heroId,
+        },
+        data: {
+          name: reqBody.name,
+          origin: reqBody.origin,
+          description: reqBody.description,
+        },
+      });
+      response.json(updatedHero);
+    } else {
+      next(new HeroNotFoundException(heroId));
+    }
+  };
+
+  deleteHero = async (
+    request: express.Request,
+    response: express.Response,
+    next: express.NextFunction,
+  ) => {
+    const heroId = Number.parseInt(request.params.heroId);
+    const hero = await this.prisma.hero.findUnique({
+      where: {
+        id: heroId,
+      },
+    });
+
+    if (hero) {
+      await this.prisma.hero.delete({
+        where: {
+          id: heroId,
+        },
+      });
+      response.json({ message: `Hero with id ${heroId} was deleted` });
+    } else {
+      next(new HeroNotFoundException(heroId));
+    }
   };
 }

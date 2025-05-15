@@ -16,3 +16,16 @@ Content-Type: application/json
 
 ### Lấy hero theo ID
 GET http://localhost:3001/heroes/2
+
+### Cập nhật hero theo ID
+PUT http://localhost:3001/heroes/2
+Content-Type: application/json
+
+{
+    "name": "Spider Man Updated",
+    "origin": "modern",
+    "description": "updated description"
+}
+
+### Xóa hero theo ID
+DELETE http://localhost:3001/heroes/1
